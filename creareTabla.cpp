@@ -59,13 +59,52 @@ void afisare()
 
 
 
-void neg(int x, int y);
+void neg(int x, int y)
+{
+	x++;
+	y--;
+	tabla[x][y] = 'N';
+	y++;
+	tabla[x][y] = 'e';
+	y++;
+	tabla[x][y] = 'g';
+}
 
+void alb(int x, int y)
+{
+	x++;
+	y--;
+	tabla[x][y] = 'A';
+	y++;
+	tabla[x][y] = 'l';
+	y++;
+	tabla[x][y] = 'b';
+}
 
-void alb(int x, int y);
-
-
-void casutaAlbao(int x, int y);
+void casutaAlbao(int x, int y)
+{
+	int c = 177, jndex;
+	x--;
+	jndex = y - 3;
+	for (y = jndex; y < jndex + 8; y++) {
+		tabla[x][y] = c;
+	}
+	y = y - 6;
+	x++;
+	tabla[x][y] = c;
+	y = y + 6;
+	tabla[x][y] = c;
+	x++;
+	y = y - 6;
+	tabla[x][y] = c;
+	y = y + 6;
+	tabla[x][y] = c;
+	jndex = y - 6;
+	x++;
+	for (y = jndex; y < jndex + 8; y++) {
+		tabla[x][y] = c;
+	}
+}
 
 
 void casutaAlban(int xx, int yy);
