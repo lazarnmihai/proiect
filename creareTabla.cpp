@@ -19,3 +19,59 @@ void afisareCasute()
 	}
 }
 
+
+void select(int x, int y)
+{
+	int c = 254, jndex;
+	x--;
+	jndex = y - 3;
+	for (y = jndex; y < jndex + 7; y++) {
+		tabla[x][y] = c;
+	}
+	y = y - 6;
+	x++;
+	tabla[x][y] = c;
+	y = y + 6;
+	tabla[x][y] = c;
+	x++;
+	y = y - 6;
+	tabla[x][y] = c;
+	y = y + 6;
+	tabla[x][y] = c;
+	jndex = y - 6;
+	x++;
+	for (y = jndex; y < jndex + 7; y++) {
+		tabla[x][y] = c;
+	}
+}
+
+
+void afisare()
+{
+	int index, jndex;
+	for (index = 0; index <= 45; index++)
+	{
+		for (jndex = 0; jndex <= 71; jndex++)
+			cout << tabla[index][jndex];
+		cout << endl;
+	}
+}
+
+
+
+void neg(int x, int y);
+
+
+void alb(int x, int y);
+
+
+void casutaAlbao(int x, int y);
+
+
+void casutaAlban(int xx, int yy);
+
+
+void casutaAlbaoo(int x, int y);
+
+
+void casutaAlbann(int xx, int yy);
