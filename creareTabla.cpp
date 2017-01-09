@@ -19,7 +19,6 @@ void afisareCasute()
 	}
 }
 
-
 void select(int x, int y)
 {
 	int c = 254, jndex;
@@ -45,7 +44,6 @@ void select(int x, int y)
 	}
 }
 
-
 void afisare()
 {
 	int index, jndex;
@@ -56,8 +54,6 @@ void afisare()
 		cout << endl;
 	}
 }
-
-
 
 void neg(int x, int y)
 {
@@ -106,11 +102,61 @@ void casutaAlbao(int x, int y)
 	}
 }
 
+void casutaAlban(int xx, int yy)
+{
+	casutaAlbao(xx, yy);
+	int jndex;
+	jndex = yy - 3;
+	int c = 177;
+	for (yy = jndex; yy < jndex + 6; yy++) {
+		tabla[xx][yy] = c;
+	}
+	xx++;
+	jndex = yy - 4;
+	for (yy = jndex; yy < jndex + 6; yy++) {
+		tabla[xx][yy] = c;
+	}
+}
 
-void casutaAlban(int xx, int yy);
+void casutaAlbaoo(int x, int y)
+{
+	int	c = 177;
+	x--;
+	int jndex;
+	jndex = y - 3;
+	for (y = jndex; y < jndex + 8; y++) {
+		tabla[x][y] = c;
+	}
+	y = y - 6;
+	x++;
+	auxTabla[x][y] = c;
+	y = y + 6;
+	auxTabla[x][y] = c;
+	x++;
+	y = y - 6;
+	auxTabla[x][y] = c;
+	y = y + 6;
+	auxTabla[x][y] = c;
+	jndex = y - 6;
+	x++;
+	for (y = jndex; y < jndex + 8; y++) {
+		tabla[x][y] = c;
+	}
+}
 
-
-void casutaAlbaoo(int x, int y);
-
-
-void casutaAlbann(int xx, int yy);
+void casutaAlbann(int xx, int yy)
+{
+	casutaAlbaoo(xx, yy);
+	char c;
+	c = 177;
+	int jndex;
+	jndex = yy - 3;
+	for (yy = jndex; yy < jndex + 6; yy++) {
+		tabla[xx][yy] = c;
+	}
+	xx++;
+	jndex = yy - 4;
+	for (yy = jndex; yy < jndex + 6; yy++) {
+		tabla[xx][yy] = c;
+	}
+}
