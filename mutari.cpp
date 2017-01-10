@@ -11,9 +11,7 @@ int col[10] = { 1,7,15,23,31,39,47,55,63,69 }, lin[10] = { 1,4,9,14,19,24,29,34,
 
 int opuse(int xx1, int yy1, int xx2, int yy2);
 
-
 int mutarePionInvers(int x1, int y1, int x2, int y2);
-
 
 int mutarePion(int x1, int y1, int x2, int y2)
 {
@@ -52,7 +50,6 @@ int mutarePion(int x1, int y1, int x2, int y2)
 	}
 	return 0;
 }
-
 
 int mutareTura(int x1, int y1, int x2, int y2)
 {
@@ -147,7 +144,6 @@ int mutareTura(int x1, int y1, int x2, int y2)
 	return 0;
 }
 
-
 int mutareCal(int x1, int y1, int x2, int y2)
 {
 	if (casuta[x2][y2] == 0) {
@@ -207,7 +203,6 @@ int mutareCal(int x1, int y1, int x2, int y2)
 	}
 }
 
-
 int mutareNebun(int x1, int y1, int x2, int y2)
 {
 	int index, jndex, ok;
@@ -222,13 +217,12 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 				if (casuta[index][jndex] != 0) {
 					ok = 0;
 				}
-				if (index == x2 && jndex == y2) {
-					if (ok == 1) {
-						return 1;
-					}
+				if ((index == x2 && jndex == y2) && (ok == 1)) {
+					return 1;
 				}
 			}
 		}
+
 		index = x1;
 		jndex = y1;
 		if (x1 < x2 && y1 < y2) {
@@ -238,13 +232,12 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 				if (casuta[index][jndex] != 0) {
 					ok = 0;
 				}
-				if (index == x2 && jndex == y2) {
-					if (ok == 1) {
-						return 1;
-					}
+				if ((index == x2 && jndex == y2) && (ok == 1)) {
+					return 1;
 				}
 			}
 		}
+
 		index = x1;
 		jndex = y1;
 		if (x1<x2 && y1>y2) {
@@ -254,13 +247,12 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 				if (casuta[index][jndex] != 0) {
 					ok = 0;
 				}
-				if (index == x2 && jndex == y2) {
-					if (ok == 1) {
-						return 1;
-					}
+				if ((index == x2 && jndex == y2) && (ok == 1)) {
+					return 1;
 				}
 			}
 		}
+
 		index = x1;
 		jndex = y1;
 		if (x1 > x2 && y1 > y2) {
@@ -270,10 +262,8 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 				if (casuta[index][jndex] != 0) {
 					ok = 0;
 				}
-				if (index == x2 && jndex == y2) {
-					if (ok == 1) {
-						return 1;
-					}
+				if ((index == x2 && jndex == y2) && (ok == 1)) {
+					return 1;
 				}
 			}
 		}
@@ -291,10 +281,8 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 					if (casuta[index][jndex] != 0 && index != x2) {
 						ok = 0;
 					}
-					if (index == x2 && jndex == y2) {
-						if (ok == 1) {
-							return 1;
-						}
+					if ((index == x2 && jndex == y2) && (ok == 1)) {
+						return 1;
 					}
 				}
 			}
@@ -307,10 +295,8 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 					if (casuta[index][jndex] != 0 && index != x2) {
 						ok = 0;
 					}
-					if (index == x2 && jndex == y2) {
-						if (ok == 1) {
-							return 1;
-						}
+					if ((index == x2 && jndex == y2) && (ok == 1)) {
+						return 1;
 					}
 				}
 			}
@@ -323,10 +309,8 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 					if (casuta[index][jndex] != 0 && index != x2) {
 						ok = 0;
 					}
-					if (index == x2 && jndex == y2) {
-						if (ok == 1) {
-							return 1;
-						}
+					if ((index == x2 && jndex == y2) && (ok == 1)) {
+						return 1;
 					}
 				}
 			}
@@ -339,10 +323,8 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 					if (casuta[index][jndex] != 0 && index != x2) {
 						ok = 0;
 					}
-					if (index == x2 && jndex == y2) {
-						if (ok == 1) {
-							return 1;
-						}
+					if ((index == x2 && jndex == y2) && (ok == 1)) {
+						return 1;
 					}
 				}
 			}
@@ -350,7 +332,6 @@ int mutareNebun(int x1, int y1, int x2, int y2)
 	}
 	return 0;
 }
-
 
 int mutareRegina(int x1, int y1, int x2, int y2);
 
