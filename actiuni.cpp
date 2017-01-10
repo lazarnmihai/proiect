@@ -299,4 +299,238 @@ void stergere(int x, int y)
 	}
 }
 
-void completareCasute(int x, int y);
+void completareCasute(int x, int y)
+{
+	int xx, yy;
+	xx = lin[x];
+	yy = col[y];
+	yy--;
+	yy--;
+	if (casuta[x][y] == 1) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'P';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		alb(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == 2) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'T';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		alb(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == 3) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'C';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		alb(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == 4) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'N';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		alb(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == 5) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'Q';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		alb(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == 6) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'R';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		alb(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == -1) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'P';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		neg(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == -2) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'T';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		neg(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == -3) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'C';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		neg(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == -4) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'N';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		neg(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == -5) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'Q';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		neg(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+
+	if (casuta[x][y] == -6) {
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = 'R';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy++;
+		tabla[xx][yy] = ' ';
+		yy = yy - 2;
+		neg(xx, yy);
+		xx++;
+		yy = yy - 2;
+		tabla[xx][yy] = ' ';
+		yy = yy + 4;
+		tabla[xx][yy] = ' ';
+	}
+}
