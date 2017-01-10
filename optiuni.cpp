@@ -213,11 +213,195 @@ int verifRocada(int x1, int y1, int x2, int y2)
 }
 
 
-void rocada(int x1, int y1, int x2, int y2);
+void rocada(int x1, int y1, int x2, int y2)
+{
+	if (casuta[x1][y1] > 0) {
+		if (x1 == x2) {
+			if (casuta[x1][y1] == 6) {
+				if (casuta[x2][y2] == 2) {
+					if (y2 - y1 == 3) {
+						if (casuta[x1][y1 + 1] == 0 && casuta[x1][y1 + 2] == 0) {
+							casuta[x1][y1 + 1] = 2;
+							casuta[x1][y1 + 2] = 6;
+							casuta[x1][y1] = 0;
+							casuta[x2][y2] = 0;
+							tabla[lin[x1]][col[y1 + 1]] = 'T';
+							completareCasute(x1, y1 + 1);
+							tabla[lin[x1]][col[y1 + 2]] = 'R';
+							completareCasute(x1, y1 + 2);
+							stergere(lin[x1], col[y1]);
+							stergere(lin[x2], col[y2]);
+						}
+					}
+					if (y1 - y2 == 4) {
+						if (casuta[x1][y1 - 1] == 0 && casuta[x1][y1 - 2] == 0 && casuta[x1][y1 - 3] == 0) {
+							casuta[x1][y1 - 1] = 2;
+							casuta[x1][y1 - 2] = 6;
+							casuta[x1][y1] = 0;
+							casuta[x2][y2] = 0;
+							tabla[lin[x1]][col[y1 - 1]] = 'T';
+							completareCasute(x1, y1 - 1);
+							tabla[lin[x1]][col[y1 - 2]] = 'R';
+							completareCasute(x1, y1 - 2);
+							stergere(lin[x1], col[y1]);
+							stergere(lin[x2], col[y2]);
+						}
+					}
+				}
+			}
+		}
+	}
+	if (casuta[x1][y1] < 0) {
+		if (x1 == x2) {
+			if (casuta[x1][y1] == -6) {
+				if (casuta[x2][y2] == -2) {
+					if (y1 - y2 == 3) {
+						if (casuta[x1][y1 - 1] == 0 && casuta[x1][y1 - 2] == 0) {
+							casuta[x1][y1 - 1] = -2;
+							casuta[x1][y1 - 2] = -6;
+							casuta[x1][y1] = 0;
+							casuta[x2][y2] = 0;
+							tabla[lin[x1]][col[y1 - 1]] = 'T';
+							completareCasute(x1, y1 - 1);
+							tabla[lin[x1]][col[y1 - 2]] = 'R';
+							completareCasute(x1, y1 - 2);
+							stergere(lin[x1], col[y1]);
+							stergere(lin[x2], col[y2]);
+						}
+					}
+					if (y2 - y1 == 4) {
+						if (casuta[x1][y1 + 1] == 0 && casuta[x1][y1 + 2] == 0 && casuta[x1][y1 + 3] == 0) {
+							casuta[x1][y1 + 1] = -2;
+							casuta[x1][y1 + 2] = -6;
+							casuta[x1][y1] = 0;
+							casuta[x2][y2] = 0;
+							tabla[lin[x1]][col[y1 + 1]] = 'T';
+							completareCasute(x1, y1 + 1);
+							tabla[lin[x1]][col[y1 + 2]] = 'R';
+							completareCasute(x1, y1 + 2);
+							stergere(lin[x1], col[y1]);
+							stergere(lin[x2], col[y2]);
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 
-int mutare(int cooX1, int cooY1, int cooX2, int cooY2);
-
+int mutare(int cooX1, int cooY1, int cooX2, int cooY2)
+{
+	if (casuta[cooX1][cooY1] == 1) {
+		if (mutarePion(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == 2) {
+		if (mutareTura(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == 3) {
+		if (mutareCal(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == 4) {
+		if (mutareNebun(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == 5) {
+		if (mutareRegina(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == 6) {
+		if (mutareRege(cooX1, cooY1, cooX2, cooY2) == 1) {
+			casuta[cooX2][cooY2] = 6;
+			if (sah(cooX2, cooY2) == 0) {
+				return 1;
+			}
+			casuta[cooX2][cooY2] = 0;
+		}
+		return 0;
+	}
+	if (casuta[cooX1][cooY1] == -1) {
+		if (mutarePion(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == -2) {
+		if (mutareTura(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == -3) {
+		if (mutareCal(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == -4) {
+		if (mutareNebun(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == -5) {
+		if (mutareRegina(cooX1, cooY1, cooX2, cooY2) == 1) {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	if (casuta[cooX1][cooY1] == -6) {
+		if (mutareRege(cooX1, cooY1, cooX2, cooY2) == 1) {
+			casuta[cooX2][cooY2] = -6;
+			if (sah(cooX2, cooY2) == 0) {
+				return 1;
+			}
+			casuta[cooX2][cooY2] = 0;
+		}
+		return 0;
+	}
+}
 
 
 int sahMat(int x, int y);
