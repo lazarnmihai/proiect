@@ -78,6 +78,9 @@ int mutareRege(int x1, int y1, int x2, int y2);
 void schimbarePion(int x1, int y1);
 
 
+int sah(int xx1, int yy1);
+
+
 int verifRocada(int x1, int y1, int x2, int y2);
 
 
