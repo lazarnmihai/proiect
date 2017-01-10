@@ -5,9 +5,6 @@
 #include "chessHeader.h"
 using namespace std;
 
-char tabla[100][100], auxTabla[100][100], sirCaractere[10];
-int col[10] = { 1,7,15,23,31,39,47,55,63,69 }, lin[10] = { 1,4,9,14,19,24,29,34,39,43 }, casuta[10][10], aux2[10][10], coordX, coordY, xra, yra, xrn, yrn;
-
 
 void schimbarePion(int x1, int y1)
 {
@@ -86,7 +83,6 @@ void schimbarePion(int x1, int y1)
 		}
 	}
 }
-
 
 int sah(int xx1, int yy1)
 {
@@ -170,7 +166,6 @@ int sah(int xx1, int yy1)
 	return 0;
 }
 
-
 int verifRocada(int x1, int y1, int x2, int y2)
 {
 	if (casuta[x1][y1] > 0) {
@@ -211,7 +206,6 @@ int verifRocada(int x1, int y1, int x2, int y2)
 	}
 	return 0;
 }
-
 
 void rocada(int x1, int y1, int x2, int y2)
 {
@@ -288,7 +282,6 @@ void rocada(int x1, int y1, int x2, int y2)
 		}
 	}
 }
-
 
 int mutare(int cooX1, int cooY1, int cooX2, int cooY2)
 {
@@ -403,8 +396,370 @@ int mutare(int cooX1, int cooY1, int cooX2, int cooY2)
 	}
 }
 
+int sahMat(int x, int y)
+{
+	int index, jndex, ok = 1, kndex, hndex, xx, yy, var;
+	if (casuta[x][y] > 0) {
+		for (index = 1; index <= 8; index++) {
+			for (jndex = 1; jndex <= 8; jndex++) {
+				for (kndex = 1; kndex <= 8; kndex++) {
+					for (hndex = 1; hndex <= 8; hndex++) {
+						if (casuta[kndex][hndex] > 0) {
+							if (casuta[kndex][hndex] == 1) {
+								if (mutarePion(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 1;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = 1;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 2) {
+								if (mutareTura(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 2;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = 2;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 3) {
+								if (mutareCal(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 3;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = 3;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 4) {
+								if (mutareNebun(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 4;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = 4;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 5) {
+								if (mutareRegina(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 5;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = 5;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 6) {
+								if (mutareRege(kndex, hndex, index, jndex) == 1) {
+									xx = index;
+									yy = jndex;
+									var = casuta[xx][yy];
+									casuta[kndex][hndex] = 0;
+									casuta[xx][yy] = 6;
+									if (sah(xx, yy) == 0) {
+										ok = 0;
+									}
+									casuta[xx][yy] = var;
+									casuta[kndex][hndex] = 6;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (casuta[x][y] < 0) {
+		for (index = 1; index <= 8; index++) {
+			for (jndex = 1; jndex <= 8; jndex++) {
+				for (kndex = 1; kndex <= 8; kndex++) {
+					for (hndex = 1; hndex <= 8; hndex++) {
+						if (casuta[kndex][hndex] < 0) {
+							if (casuta[kndex][hndex] == -1) {
+								if (mutarePion(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -1;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = -1;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -2) {
+								if (mutareTura(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -2;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = -2;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -3) {
+								if (mutareCal(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -3;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = -3;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -4) {
+								if (mutareNebun(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -4;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = -4;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -5) {
+								if (mutareRegina(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -5;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 0;
+									}
+									casuta[kndex][hndex] = -5;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -6) {
+								if (mutareRege(kndex, hndex, index, jndex) == 1) {
+									xx = index;
+									yy = jndex;
+									var = casuta[xx][yy];
+									casuta[kndex][hndex] = 0;
+									casuta[xx][yy] = -6;
+									if (sah(xx, yy) == 0) {
+										ok = 0;
+									}
+									casuta[xx][yy] = var;
+									casuta[kndex][hndex] = -6;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (ok == 1) {
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
-int sahMat(int x, int y);
-
-
-int pat(int x, int y);
+int pat(int x, int y)
+{
+	int index, jndex, kndex, hndex, ok = 0, xx, yy, var;
+	if (casuta[x][y] > 0) {
+		for (index = 1; index <= 8; index++) {
+			for (jndex = 1; jndex <= 8; jndex++) {
+				for (kndex = 1; kndex <= 8; kndex++) {
+					for (hndex = 1; hndex <= 8; hndex++) {
+						if (casuta[kndex][hndex] > 0) {
+							if (casuta[kndex][hndex] == 1) {
+								if (mutarePion(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 1;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = 1;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 2) {
+								if (mutareTura(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 2;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = 2;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 3) {
+								if (mutareCal(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 3;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = 3;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 4) {
+								if (mutareNebun(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 4;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = 4;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 5) {
+								if (mutareRegina(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = 5;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = 5;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == 6) {
+								if (mutareRege(kndex, hndex, index, jndex) == 1) {
+									xx = index;
+									yy = jndex;
+									var = casuta[xx][yy];
+									casuta[kndex][hndex] = 0;
+									casuta[xx][yy] = 6;
+									if (sah(xx, yy) == 0) {
+										ok = 1;
+									}
+									casuta[xx][yy] = var;
+									casuta[kndex][hndex] = 6;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (casuta[x][y] < 0) {
+		for (index = 1; index <= 8; index++) {
+			for (jndex = 1; jndex <= 8; jndex++) {
+				for (kndex = 1; kndex <= 8; kndex++) {
+					for (hndex = 1; hndex <= 8; hndex++) {
+						if (casuta[kndex][hndex] < 0) {
+							if (casuta[kndex][hndex] == -1) {
+								if (mutarePion(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -1;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = -1;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -2) {
+								if (mutareTura(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -2;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = -2;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -3) {
+								if (mutareCal(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -3;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = -3;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -4) {
+								if (mutareNebun(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -4;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = -4;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -5) {
+								if (mutareRegina(kndex, hndex, index, jndex) == 1) {
+									var = casuta[index][jndex];
+									casuta[index][jndex] = -5;
+									casuta[kndex][hndex] = 0;
+									if (sah(x, y) == 0) {
+										ok = 1;
+									}
+									casuta[kndex][hndex] = -5;
+									casuta[index][jndex] = var;
+								}
+							}
+							if (casuta[kndex][hndex] == -6) {
+								if (mutareRege(kndex, hndex, index, jndex) == 1) {
+									xx = index;
+									yy = jndex;
+									var = casuta[xx][yy];
+									casuta[kndex][hndex] = 0;
+									casuta[xx][yy] = -6;
+									if (sah(xx, yy) == 0) {
+										ok = 1;
+									}
+									casuta[xx][yy] = var;
+									casuta[kndex][hndex] = -6;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (ok == 1) {
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
