@@ -1,2 +1,2 @@
 # Proiect IntroP
-Chess
+Chess.
