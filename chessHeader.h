@@ -1,5 +1,5 @@
 
-// Fisierul Header al Proiectului "Chess"
+
 
 
 
@@ -73,5 +73,23 @@ int mutareRegina(int x1, int y1, int x2, int y2);
 
 
 int mutareRege(int x1, int y1, int x2, int y2);
+
+
+void schimbarepion(int x1, int y1);
+
+
+int verifRocada(int x1, int y1, int x2, int y2);
+
+
+void rocada(int x1, int y1, int x2, int y2);
+
+
+int mutare(int cooX1, int cooY1, int cooX2, int cooY2);
+
+
+int sahMat(int x, int y);
+
+
+int pat(int x, int y);
 
 
