@@ -145,17 +145,158 @@ void deselect(int x, int y)
 	}
 }
 
+void convertire()
+{
+	coordX = sirCaractere[0] - 48;
+	if (sirCaractere[1] == 'A') {
+		coordY = 1;
+	}
+	if (sirCaractere[1] == 'B') {
+		coordY = 2;
+	}
+	if (sirCaractere[1] == 'C') {
+		coordY = 3;
+	}
+	if (sirCaractere[1] == 'D') {
+		coordY = 4;
+	}
+	if (sirCaractere[1] == 'E') {
+		coordY = 5;
+	}
+	if (sirCaractere[1] == 'F') {
+		coordY = 6;
+	}
+	if (sirCaractere[1] == 'G') {
+		coordY = 7;
+	}
+	if (sirCaractere[1] == 'H') {
+		coordY = 8;
+	}
+}
 
-void convertire();
+void aranjare()
+{
+	char auxSir[3];
+	auxSir[0] = 0;
+	auxSir[1] = 0;
+	if (sirCaractere[0] > '0' && sirCaractere[0] < '9')
+	{
+		if (sirCaractere[1] > 96 && sirCaractere[1] < 'i')
+		{
+			if (sirCaractere[1] == 'a') {
+				sirCaractere[1] = 'A';
+			}
+			if (sirCaractere[1] == 'b') {
+				sirCaractere[1] = 'B';
+			}
+			if (sirCaractere[1] == 'c') {
+				sirCaractere[1] = 'C';
+			}
+			if (sirCaractere[1] == 'd') {
+				sirCaractere[1] = 'D';
+			}
+			if (sirCaractere[1] == 'e') {
+				sirCaractere[1] = 'E';
+			}
+			if (sirCaractere[1] == 'f') {
+				sirCaractere[1] = 'F';
+			}
+			if (sirCaractere[1] == 'g') {
+				sirCaractere[1] = 'G';
+			}
+			if (sirCaractere[1] == 'h') {
+				sirCaractere[1] = 'H';
+			}
+		}
+	}
+	if (sirCaractere[0] > 96 && sirCaractere[0] < 'i')
+	{
+		if (sirCaractere[0] == 'a') {
+			sirCaractere[0] = 'A';
+		}
+		if (sirCaractere[0] == 'b') {
+			sirCaractere[0] = 'B';
+		}
+		if (sirCaractere[0] == 'c') {
+			sirCaractere[0] = 'C';
+		}
+		if (sirCaractere[0] == 'd') {
+			sirCaractere[0] = 'D';
+		}
+		if (sirCaractere[0] == 'e') {
+			sirCaractere[0] = 'E';
+		}
+		if (sirCaractere[0] == 'f') {
+			sirCaractere[0] = 'F';
+		}
+		if (sirCaractere[0] == 'g') {
+			sirCaractere[0] = 'G';
+		}
+		if (sirCaractere[0] == 'h') {
+			sirCaractere[0] = 'H';
+		}
+		auxSir[1] = sirCaractere[0];
+		auxSir[0] = sirCaractere[1];
+		sirCaractere[0] = auxSir[0];
+		sirCaractere[1] = auxSir[1];
+	}
+	if (sirCaractere[0] >= 64 && sirCaractere[0] < 'I')
+	{
+		auxSir[1] = sirCaractere[0];
+		auxSir[0] = sirCaractere[1];
+		sirCaractere[0] = auxSir[0];
+		sirCaractere[1] = auxSir[1];
+	}
+	convertire();
+}
 
+int verificareCoord()
+{
+	cin >> sirCaractere;
+	if (strlen(sirCaractere) == 2)
+	{
+		if ((sirCaractere[0] > '0' && sirCaractere[0] < '9') || (sirCaractere[0] > 96 && sirCaractere[0] < 'i') || (sirCaractere[0] > 64 && sirCaractere[0] < 'I'))
+		{
+			if ((sirCaractere[1] > '0' && sirCaractere[1] < '9') || (sirCaractere[1] > 96 && sirCaractere[1] < 'i') || (sirCaractere[1] > 64 && sirCaractere[1] < 'I'))
+			{
+				if ((sirCaractere[0] > '0' && sirCaractere[0] < '9') && ((sirCaractere[1] > 96 && sirCaractere[1] < 'i') || (sirCaractere[1] >= 64 && sirCaractere[1] < 'I')))
+					return 1;
+				if ((sirCaractere[1] > '0' && sirCaractere[1] < '9') && ((sirCaractere[0] > 96 && sirCaractere[0] < 'i') || (sirCaractere[0] >= 64 && sirCaractere[0] < 'I')))
+					return 1;
+				return 0;
+			}
+			return 0;
+		}
+		return 0;
+	}
+	return 0;
+}
 
-void aranjare();
-
-
-int verificareCoord();
-
-
-void stergere(int x, int y);
-
+void stergere(int x, int y)
+{
+	int ok = 0, index, jndex;
+	y = y - 2;
+	x--;
+	resetAux();
+	if (auxTabla[x][y] != ' ') {
+		ok = 1;
+	}
+	y--;
+	if (ok == 1) {
+		for (index = x; index <= x + 3; index++) {
+			for (jndex = y; jndex <= y + 6; jndex++) {
+				tabla[index][jndex] = 177;
+			}
+		}
+	}
+	else
+	{
+		for (index = x; index <= x + 3; index++) {
+			for (jndex = y; jndex <= y + 6; jndex++) {
+				tabla[index][jndex] = ' ';
+			}
+		}
+	}
+}
 
 void completareCasute(int x, int y);
