@@ -1,4 +1,4 @@
-#include "stdafx.h"
+/*
 #include <iostream>
 #include "chessHeader.h"
 
@@ -135,3 +135,4 @@ void casutaAlbann(int xx, int yy)
 		tabla[xx][yy] = c;
 	}
 }
+*/
