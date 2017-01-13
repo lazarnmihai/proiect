@@ -1,4 +1,4 @@
-
+/*
 #include <iostream>
 #include <string.h>
 #include "actiuni.cpp"
@@ -717,3 +717,4 @@ int mutareRege(int x1, int y1, int x2, int y2)
 	}
 	return 0;
 }
+*/
