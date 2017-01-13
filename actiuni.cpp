@@ -1,4 +1,5 @@
-#include "stdafx.h"
+/*
+
 #include <iostream>
 #include "chessHeader.h"
 
@@ -534,3 +535,4 @@ void completareCasute(int x, int y)
 		tabla[xx][yy] = ' ';
 	}
 }
+*/
