@@ -1,5 +1,5 @@
 
-
+/*
 
 
 
@@ -96,3 +96,4 @@ int sahMat(int x, int y);
 int pat(int x, int y);
 
 
+*/
