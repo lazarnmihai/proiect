@@ -1,5 +1,4 @@
-
-#include "stdafx.h"
+/*
 #include <iostream>
 #include <string.h>
 #include "chessHeader.h"
@@ -763,3 +762,4 @@ int pat(int x, int y)
 		return 0;
 	}
 }
+*/
